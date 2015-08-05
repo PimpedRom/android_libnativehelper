@@ -33,7 +33,10 @@ LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libnativehelper
 LOCAL_CLANG := true
-LOCAL_CFLAGS := -Werror -fvisibility=protected
+LOCAL_CFLAGS := -Werror -fvisibility=protected -mtune=cortex-a15 \
+                -ftree-vectorize -fivopts -ffast-math -frename-registers \
+                -funswitch-loops -fgcse-after-reload \
+                -O3
 LOCAL_C_INCLUDES := external/stlport/stlport bionic/ bionic/libstdc++/include libcore/include
 LOCAL_SHARED_LIBRARIES += libcutils libstlport libdl
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
@@ -54,7 +57,10 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/include/nativehelper
 LOCAL_EXPORT_C_INCLUDE_DIRS := \
     $(LOCAL_PATH)/include/nativehelper
-LOCAL_CFLAGS := -Werror
+LOCAL_CFLAGS := -Werror -mtune=cortex-a15 \
+                -ftree-vectorize -fivopts -ffast-math -frename-registers \
+                -funswitch-loops -fgcse-after-reload \
+                -O3
 LOCAL_SRC_FILES := $(local_src_files)
 LOCAL_LDFLAGS := -llog -ldl
 LOCAL_SDK_VERSION := 19
@@ -74,7 +80,10 @@ LOCAL_CLANG := true
 LOCAL_SRC_FILES := \
     $(local_src_files) \
     JniInvocation.cpp
-LOCAL_CFLAGS := -Werror -fvisibility=protected
+LOCAL_CFLAGS := -Werror -fvisibility=protected -mtune=cortex-a15 \
+                -ftree-vectorize -fivopts -ffast-math \
+                -funswitch-loops \
+                -O3
 LOCAL_C_INCLUDES := libcore/include
 LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_LDFLAGS := -ldl
